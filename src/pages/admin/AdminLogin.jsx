@@ -24,10 +24,30 @@ function AdminLogin() {
     setError("")
     setSubmitting(true)
 
-    const { data, error: signInError } = await signIn(email, password)
+    const { data, error: signInError } = await signIn(email.trim(), password)
 
     if (signInError) {
-      setError("Email atau password salah.")
+      const errorCode = signInError.code
+
+      console.error("Supabase Auth menolak login admin:", {
+        code: errorCode,
+        name: signInError.name,
+        status: signInError.status,
+        message: signInError.message,
+      })
+
+      if (errorCode === "invalid_credentials") {
+        setError("Supabase Auth menolak email atau password. Pastikan email akun Auth tepat; jika perlu, reset password akun di Supabase.")
+      } else if (errorCode === "email_not_confirmed") {
+        setError("Email akun Supabase Auth belum dikonfirmasi.")
+      } else if (errorCode === "over_request_rate_limit" || errorCode === "too_many_requests") {
+        setError("Terlalu banyak percobaan login. Tunggu beberapa menit lalu coba lagi.")
+      } else {
+        const errorType = signInError.name || "AuthError"
+        const errorDetail = signInError.message || "detail tidak tersedia"
+        setError(`Login gagal (${errorType}${errorCode ? `, kode ${errorCode}` : ""}): ${errorDetail}`)
+      }
+
       setSubmitting(false)
       return
     }
