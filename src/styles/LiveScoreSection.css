@@ -1,0 +1,197 @@
+/* Live Score Section */
+.live-score {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+.live-score-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Judul section */
+.section-heading {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.section-heading span {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.section-heading h2 {
+  margin-top: 8px;
+  color: #172554;
+  font-size: 32px;
+}
+
+.section-heading p {
+  margin-top: 8px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Kartu pertandingan */
+.match-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+/* Header kartu */
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.match-label {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.live-status {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Isi pertandingan */
+.match-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 32px 0;
+}
+
+/* Identitas tim */
+.team-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.team-a {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.team-b {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.team h3 {
+  color: #172554;
+  font-size: 16px;
+}
+
+.team p {
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Skor pertandingan */
+.match-score h2 {
+  color: #172554;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.match-score span {
+  display: block;
+  margin-top: 8px;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.match-score p {
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Footer kartu */
+.match-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.match-footer span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.match-footer a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .live-score {
+    padding: 60px 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .match-card {
+    padding: 18px 14px;
+  }
+
+  .match-content {
+    padding: 28px 0;
+  }
+
+  .team-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .team h3 {
+    font-size: 14px;
+  }
+
+  .team p {
+    font-size: 10px;
+  }
+
+  .match-score h2 {
+    font-size: 27px;
+  }
+
+  .match-footer {
+    gap: 12px;
+  }
+}

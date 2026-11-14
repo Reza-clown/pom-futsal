@@ -1,0 +1,105 @@
+/* Standings Section */
+.standings {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: #f8fafc;
+}
+
+.standings-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Kartu klasemen */
+.standings-card {
+  width: 100%;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+/* Pembungkus tabel */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Tabel */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.standings-table th {
+  padding: 16px 12px;
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.standings-table td {
+  padding: 18px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 14px;
+}
+
+/* Nama tim */
+.standings-table .team-name {
+  color: #172554;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Poin */
+.standings-table .points {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* Baris terakhir */
+.standings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Efek hover */
+.standings-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Keterangan */
+.standings-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .standings {
+    padding: 60px 20px;
+  }
+
+  .standings-card {
+    padding: 14px;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 14px 10px;
+    font-size: 12px;
+  }
+
+  .standings-note {
+    flex-direction: column;
+  }
+}

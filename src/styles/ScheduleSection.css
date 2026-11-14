@@ -1,0 +1,181 @@
+/* Schedule Section */
+.schedule {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+.schedule-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Matchday */
+.matchday {
+  max-width: 900px;
+}
+
+.matchday-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.matchday-header h3 {
+  color: #172554;
+  font-size: 18px;
+}
+
+.matchday-header span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Kartu jadwal */
+.schedule-card {
+  display: grid;
+  grid-template-columns: 140px 1fr 110px;
+  align-items: center;
+  gap: 20px;
+
+  padding: 22px;
+  margin-bottom: 14px;
+
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  transition: border-color 0.2s ease;
+}
+
+.schedule-card:hover {
+  border-color: #2563eb;
+}
+
+/* Waktu pertandingan */
+.schedule-time {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.schedule-time span {
+  color: #172554;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.schedule-time small {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Tim yang bertanding */
+.schedule-teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.schedule-teams span {
+  color: #172554;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.schedule-teams strong {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Status pertandingan */
+.schedule-status {
+  padding: 8px 12px;
+  background-color: #dbeafe;
+  color: #2563eb;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Tim istirahat */
+.bye-team {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.bye-team strong {
+  color: #172554;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .schedule {
+    padding: 60px 20px;
+  }
+
+  .schedule-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .schedule-time {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .schedule-teams {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .schedule-status {
+    width: fit-content;
+  }
+}
+
+/* Status variations */
+.status-live {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-finished {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-scheduled {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+/* Skor di jadwal */
+.schedule-score {
+  color: #172554;
+  font-size: 15px;
+}
+
+/* No live matches */
+.match-no-live {
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.match-no-live p {
+  color: #475569;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.match-no-live span {
+  color: #94a3b8;
+  font-size: 13px;
+}

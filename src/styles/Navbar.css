@@ -1,0 +1,107 @@
+/* Navbar utama */
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Pembungkus isi navbar */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Identitas website */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo,
+.navbar-logo-fallback {
+  width: 60px;
+  height: 60px;
+  flex: 0 0 0px;
+}
+
+.navbar-logo {
+  display: block;
+  object-fit: contain;
+}
+
+.navbar-logo-fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.brand-text h3 {
+  margin: 0;
+  color: #172554;
+  font-size: 16px;
+}
+
+.brand-text p {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* Menu navigasi */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar-menu a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-menu a:hover {
+  color: #2563eb;
+}
+
+/* Tombol shortcut admin */
+.navbar-admin-link {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.navbar-admin-link:hover {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Tampilan layar kecil */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar-menu {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
