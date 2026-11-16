@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import { formatJakartaDateTime } from "../../lib/dateTime"
 
 const STATUS_OPTIONS = [
   { value: "scheduled", label: "Terjadwal" },
@@ -85,8 +86,7 @@ function ManageLiveScore() {
   }
 
   function formatDateTime(dateStr) {
-    if (!dateStr) return "-"
-    return new Date(dateStr).toLocaleString("id-ID", {
+    return formatJakartaDateTime(dateStr, {
       day: "numeric", month: "short",
       hour: "2-digit", minute: "2-digit",
     })

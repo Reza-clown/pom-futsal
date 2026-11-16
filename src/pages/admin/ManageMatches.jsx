@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import {
+  formatJakartaDateTime,
+  jakartaDateTimeLocalToISO,
+  toJakartaDateTimeLocal,
+} from "../../lib/dateTime"
 
 const STATUS_OPTIONS = [
   { value: "scheduled", label: "Terjadwal" },
@@ -50,17 +55,10 @@ function ManageMatches() {
   }
 
   function formatDateTime(dateStr) {
-    if (!dateStr) return "-"
-    return new Date(dateStr).toLocaleString("id-ID", {
+    return formatJakartaDateTime(dateStr, {
       day: "numeric", month: "short", year: "numeric",
       hour: "2-digit", minute: "2-digit",
     })
-  }
-
-  function toInputDate(dateStr) {
-    if (!dateStr) return ""
-    const d = new Date(dateStr)
-    return d.toISOString().slice(0, 16)
   }
 
   function getStatusBadge(status) {
@@ -83,7 +81,7 @@ function ManageMatches() {
       home_team_id: match.home_team?.id || "",
       away_team_id: match.away_team?.id || "",
       matchday: match.matchday ?? "",
-      scheduled_at: toInputDate(match.scheduled_at),
+      scheduled_at: toJakartaDateTimeLocal(match.scheduled_at),
       venue: match.venue || "",
       status: match.status || "scheduled",
     })
@@ -122,7 +120,7 @@ function ManageMatches() {
       home_team_id: form.home_team_id,
       away_team_id: form.away_team_id,
       matchday: parseInt(form.matchday),
-      scheduled_at: form.scheduled_at || null,
+      scheduled_at: jakartaDateTimeLocalToISO(form.scheduled_at),
       venue: form.venue.trim() || null,
       status: form.status,
     }

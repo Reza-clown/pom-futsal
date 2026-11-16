@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import { formatJakartaDateTime, getJakartaDateKey } from "../../lib/dateTime"
 import "../../styles/ScheduleSection.css"
 
 function ScheduleSection() {
@@ -31,14 +32,14 @@ function ScheduleSection() {
 
   function formatTime(dateStr) {
     if (!dateStr) return "-"
-    const d = new Date(dateStr)
-    return d.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }) + " WIB"
+    return formatJakartaDateTime(dateStr, {
+      hour: "2-digit",
+      minute: "2-digit",
+    }) + " WIB"
   }
 
   function formatDate(dateStr) {
-    if (!dateStr) return "-"
-    const d = new Date(dateStr)
-    return d.toLocaleDateString("id-ID", {
+    return formatJakartaDateTime(dateStr, {
       weekday: "long",
       day: "numeric",
       month: "long",
@@ -66,7 +67,7 @@ function ScheduleSection() {
   // Kelompokkan pertandingan berdasarkan tanggal
   const grouped = matches.reduce((acc, match) => {
     const date = match.scheduled_at
-      ? new Date(match.scheduled_at).toDateString()
+      ? getJakartaDateKey(match.scheduled_at)
       : "Tanggal belum ditentukan"
     if (!acc[date]) acc[date] = []
     acc[date].push(match)

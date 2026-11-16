@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import { formatJakartaDateTime } from "../../lib/dateTime"
 import "../../styles/AdminDashboard.css"
 
 function AdminDashboard() {
@@ -52,8 +53,7 @@ function AdminDashboard() {
   }
 
   function formatDateTime(dateStr) {
-    if (!dateStr) return "-"
-    return new Date(dateStr).toLocaleString("id-ID", {
+    return formatJakartaDateTime(dateStr, {
       day: "numeric", month: "short", year: "numeric",
       hour: "2-digit", minute: "2-digit",
     })
