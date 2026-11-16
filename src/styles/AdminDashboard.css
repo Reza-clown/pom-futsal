@@ -183,6 +183,32 @@
   font-weight: 600;
 }
 
+.live-score-card-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.live-score-card-inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #64748b;
+  font-size: 11px;
+  text-align: left;
+}
+
+.live-score-card-inputs input {
+  width: 100%;
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  text-align: center;
+}
+
 .live-score-display {
   display: flex;
   flex-direction: column;

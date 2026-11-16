@@ -35,7 +35,7 @@ Variabel dengan awalan `VITE_` tersedia di browser. Gunakan hanya URL Supabase d
 
 ## Pemeriksaan Supabase sebelum rilis
 
-Repository ini tidak menyertakan migrasi atau skema SQL. Sebelum deploy, pastikan proyek Supabase target sudah disiapkan dan kebijakannya sesuai:
+Skema lengkap database tidak disertakan. Sebelum deploy, pastikan proyek Supabase target sudah disiapkan dan kebijakannya sesuai. Untuk menyimpan jumlah kartu pertandingan, jalankan SQL pada [20261116200000_add_match_cards.sql](./supabase/migrations/20261116200000_add_match_cards.sql) melalui Supabase SQL Editor:
 
 - Tabel `profiles`, `teams`, dan `matches` beserta kolom serta relasi yang dipakai aplikasi tersedia.
 - Akun admin memiliki profil dengan role `admin`; akses tulis dibatasi ke admin melalui Row Level Security (RLS).

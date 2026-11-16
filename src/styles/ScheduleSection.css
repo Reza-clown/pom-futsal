@@ -13,13 +13,16 @@
 /* Matchday */
 .matchday {
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .matchday-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 4px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .matchday-header h3 {
@@ -35,7 +38,7 @@
 /* Kartu jadwal */
 .schedule-card {
   display: grid;
-  grid-template-columns: 140px 1fr 110px;
+  grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr) minmax(110px, 1fr);
   align-items: center;
   gap: 20px;
 
@@ -57,7 +60,9 @@
 .schedule-time {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 5px;
+  text-align: center;
 }
 
 .schedule-time span {
@@ -92,6 +97,7 @@
 
 /* Status pertandingan */
 .schedule-status {
+  justify-self: center;
   padding: 8px 12px;
   background-color: #dbeafe;
   color: #2563eb;
@@ -127,17 +133,19 @@
   }
 
   .schedule-time {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .schedule-teams {
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
   }
 
   .schedule-status {
     width: fit-content;
+    justify-self: center;
   }
 }
 

@@ -27,7 +27,10 @@ function StandingsSection() {
     // Ambil semua pertandingan yang sudah selesai
     const { data: matches, error: matchesError } = await supabase
       .from("matches")
-      .select("home_team_id, away_team_id, home_score, away_score, status")
+      .select(`
+        home_team_id, away_team_id, home_score, away_score,
+        home_yellow_cards, home_red_cards, away_yellow_cards, away_red_cards, status
+      `)
       .eq("status", "finished")
 
     if (matchesError) {
@@ -49,6 +52,7 @@ function StandingsSection() {
         lost: 0,
         goalsFor: 0,
         goalsAgainst: 0,
+        cards: 0,
         points: 0,
       }
     })
@@ -65,8 +69,10 @@ function StandingsSection() {
       a.played++
       h.goalsFor += hs
       h.goalsAgainst += as_
+      h.cards += (m.home_yellow_cards ?? 0) + 2 * (m.home_red_cards ?? 0)
       a.goalsFor += as_
       a.goalsAgainst += hs
+      a.cards += (m.away_yellow_cards ?? 0) + 2 * (m.away_red_cards ?? 0)
 
       if (hs > as_) {
         h.won++; h.points += 3
@@ -85,7 +91,7 @@ function StandingsSection() {
       const gdA = a.goalsFor - a.goalsAgainst
       const gdB = b.goalsFor - b.goalsAgainst
       if (gdB !== gdA) return gdB - gdA
-      return b.goalsFor - a.goalsFor
+      return a.cards - b.cards
     })
 
     setStandings(sorted)
@@ -135,6 +141,7 @@ function StandingsSection() {
                     <th>Seri</th>
                     <th>Kalah</th>
                     <th>SG</th>
+                    <th>Kartu</th>
                     <th>Poin</th>
                   </tr>
                 </thead>
@@ -148,6 +155,7 @@ function StandingsSection() {
                       <td>{team.drawn}</td>
                       <td>{team.lost}</td>
                       <td>{formatGoalDiff(team.goalsFor, team.goalsAgainst)}</td>
+                      <td>{team.cards}</td>
                       <td className="points">{team.points}</td>
                     </tr>
                   ))}
@@ -158,6 +166,7 @@ function StandingsSection() {
 
           <div className="standings-note">
             <span>* SG = Selisih Gol</span>
+            <span>* Kartu = kuning 1, merah 2</span>
             <span>Data dari database</span>
           </div>
         </div>

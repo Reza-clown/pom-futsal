@@ -12,7 +12,15 @@ function ManageLiveScore() {
   const [matches, setMatches] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)
-  const [form, setForm] = useState({ home_score: 0, away_score: 0, status: "live" })
+  const [form, setForm] = useState({
+    home_score: 0,
+    away_score: 0,
+    home_yellow_cards: 0,
+    home_red_cards: 0,
+    away_yellow_cards: 0,
+    away_red_cards: 0,
+    status: "live",
+  })
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState("")
   const [filter, setFilter] = useState("all")
@@ -37,7 +45,8 @@ function ManageLiveScore() {
     const { data, error } = await supabase
       .from("matches")
       .select(`
-        id, status, home_score, away_score, venue, scheduled_at,
+        id, status, home_score, away_score, home_yellow_cards, home_red_cards,
+        away_yellow_cards, away_red_cards, venue, scheduled_at,
         home_team:teams!matches_home_team_id_fkey(id, name),
         away_team:teams!matches_away_team_id_fkey(id, name)
       `)
@@ -52,6 +61,10 @@ function ManageLiveScore() {
     setForm({
       home_score: match.home_score ?? 0,
       away_score: match.away_score ?? 0,
+      home_yellow_cards: match.home_yellow_cards ?? 0,
+      home_red_cards: match.home_red_cards ?? 0,
+      away_yellow_cards: match.away_yellow_cards ?? 0,
+      away_red_cards: match.away_red_cards ?? 0,
       status: match.status || "scheduled",
     })
     setError("")
@@ -71,6 +84,10 @@ function ManageLiveScore() {
       .update({
         home_score: parseInt(form.home_score) || 0,
         away_score: parseInt(form.away_score) || 0,
+        home_yellow_cards: parseInt(form.home_yellow_cards) || 0,
+        home_red_cards: parseInt(form.home_red_cards) || 0,
+        away_yellow_cards: parseInt(form.away_yellow_cards) || 0,
+        away_red_cards: parseInt(form.away_red_cards) || 0,
         status: form.status,
       })
       .eq("id", matchId)
@@ -170,6 +187,32 @@ function ManageLiveScore() {
                       {match.home_team?.name?.charAt(0) || "?"}
                     </div>
                     <span>{match.home_team?.name || "-"}</span>
+                    {editingId === match.id && (
+                      <div className="live-score-card-inputs">
+                        <label>
+                          Kartu kuning
+                          <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={form.home_yellow_cards}
+                            onChange={(e) => setForm({ ...form, home_yellow_cards: e.target.value })}
+                            disabled={saving}
+                          />
+                        </label>
+                        <label>
+                          Kartu merah (×2)
+                          <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={form.home_red_cards}
+                            onChange={(e) => setForm({ ...form, home_red_cards: e.target.value })}
+                            disabled={saving}
+                          />
+                        </label>
+                      </div>
+                    )}
                   </div>
 
                   {editingId === match.id ? (
@@ -232,6 +275,32 @@ function ManageLiveScore() {
                       {match.away_team?.name?.charAt(0) || "?"}
                     </div>
                     <span>{match.away_team?.name || "-"}</span>
+                    {editingId === match.id && (
+                      <div className="live-score-card-inputs">
+                        <label>
+                          Kartu kuning
+                          <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={form.away_yellow_cards}
+                            onChange={(e) => setForm({ ...form, away_yellow_cards: e.target.value })}
+                            disabled={saving}
+                          />
+                        </label>
+                        <label>
+                          Kartu merah (×2)
+                          <input
+                            type="number"
+                            min="0"
+                            step="1"
+                            value={form.away_red_cards}
+                            onChange={(e) => setForm({ ...form, away_red_cards: e.target.value })}
+                            disabled={saving}
+                          />
+                        </label>
+                      </div>
+                    )}
                   </div>
 
                 </div>
