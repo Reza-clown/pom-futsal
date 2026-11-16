@@ -80,7 +80,7 @@ function AdminDashboard() {
       <div className="admin-content">
 
         <div className="admin-dashboard-welcome">
-          <h2>Selamat Datang, Admin!</h2>
+          <h2>Selamat Datang, Chelsea Cantik!</h2>
           <p>Kelola seluruh kebutuhan pertandingan POM Futsal melalui halaman admin.</p>
         </div>
 
